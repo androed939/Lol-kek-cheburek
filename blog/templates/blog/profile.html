@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+    <h2>Профиль пользователя {{ user.username }}</h2>
+    {% if profile.avatar %}
+        <img src="{{ profile.avatar.url }}" alt="Avatar" width="150">
+    {% endif %}
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>О себе:</strong> {{ profile.bio|default:"Не указано" }}</p>
+    <p><strong>Дата рождения:</strong> {{ profile.birth_date|default:"Не указано" }}</p>
+    <a href="{% url 'profile_edit' %}">Редактировать профиль</a>
+{% endblock %}
